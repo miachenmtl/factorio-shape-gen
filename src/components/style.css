@@ -1,0 +1,61 @@
+header > h1 {
+  margin: 50px 0;
+  padding: 0;
+  font-size: 3rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+main {
+  margin: 0 auto;
+  width: calc(100% - 200px);
+  max-width: 1200px;
+}
+
+footer {
+  margin: 50px auto;
+  width: calc(100% - 200px);
+  max-width: 1200px;
+}
+
+footer > ul {
+  padding: 0;
+  list-style: none;
+}
+
+.upper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+@media (max-width: 1000px) {
+  .upper {
+    flex-direction: column;
+  }
+}
+
+.element {
+  min-width: 80px;
+}
+
+label {
+  display: block;
+  font-size: 1.25rem;
+  margin-bottom: 5px;
+}
+
+select {
+  font-size: 1.25rem;
+}
+
+input {
+  font-size: 1.25rem;
+}
+
+button {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}

@@ -2,6 +2,9 @@ import { h } from 'preact';
 import { render, screen, fireEvent } from '@testing-library/preact';
 
 import CollapsedText from './CollapsedText';
+import DropdownSelect from './DropdownSelect';
+import NumberInput from './NumberInput';
+import ActionButton from './ActionButton';
 
 describe('The CollapsedText component', () => {
   it('should initially shqow the button and hide the text', () => {
@@ -14,5 +17,39 @@ describe('The CollapsedText component', () => {
     render(<CollapsedText label="Show" text="foo" />);
     fireEvent.click(screen.getByText('Show'));
     expect(screen.getByText('foo')).toBeVisible();
+  });
+});
+
+describe('The DropdownSelect Component', () => {
+  it('should display the label passed as a prop', () => {
+    render(<DropdownSelect labelName="f" labelText="foo" options={['A', 'B']} />);
+    expect(screen.getByLabelText('foo')).toBeVisible();
+  });
+
+  it('should call the callback passed as a prop when an option is selected', () => {
+    const spy = jest.fn();
+    render(<DropdownSelect labelName="f" labelText="foo" options={['A', 'B']} callback={spy} />);
+    expect(spy).not.toHaveBeenCalled();
+    expect(screen.queryByDisplayValue('B')).toBeNull(); // getBy... throws error if not found
+
+    fireEvent.change(screen.getByLabelText('foo'), { target: { value: 'B' } });
+    expect(spy).toHaveBeenCalled();
+    expect(spy.mock.calls[0][0].target.value).toBe('B');
+    expect(screen.queryByDisplayValue('B')).toBeDefined();
+  });
+});
+
+describe('The ActionButton Component', () => {
+  it('should display the text passed as props', () => {
+    render(<ActionButton text="foo" />);
+    expect(screen.getByText('foo')).toBeDefined();
+  });
+
+  it('should fire a callback when the user clicks the button', () => {
+    const spy = jest.fn();
+    render(<ActionButton text="foo" callback={spy} />);
+    expect(spy).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByText('foo'));
+    expect(spy).toHaveBeenCalled();
   });
 });
