@@ -13,9 +13,9 @@ describe('The Header section', () => {
 });
 
 describe('The Main section', () => {
-  it('should for now just contain lorem ipsum', () => {
-    const { container } = render(<Main />);
-    expect(container.textContent).toContain('lorem ipsum');
+  it('should contain a button saying Generate Blueprint', () => {
+    render(<Main />);
+    expect(screen.getByRole('button').textContent).toContain('Generate Blueprint');
   });
 });
 
