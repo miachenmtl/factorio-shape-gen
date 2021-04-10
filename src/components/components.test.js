@@ -3,8 +3,8 @@ import { render, screen, fireEvent } from '@testing-library/preact';
 
 import CollapsedText from './CollapsedText';
 import DropdownSelect from './DropdownSelect';
-import NumberInput from './NumberInput';
-import ActionButton from './ActionButton';
+// import NumberInput from './NumberInput';
+import Button from './Button';
 
 describe('The CollapsedText component', () => {
   it('should initially shqow the button and hide the text', () => {
@@ -41,13 +41,13 @@ describe('The DropdownSelect Component', () => {
 
 describe('The ActionButton Component', () => {
   it('should display the text passed as props', () => {
-    render(<ActionButton text="foo" />);
+    render(<Button text="foo" />);
     expect(screen.getByText('foo')).toBeDefined();
   });
 
   it('should fire a callback when the user clicks the button', () => {
     const spy = jest.fn();
-    render(<ActionButton text="foo" callback={spy} />);
+    render(<Button text="foo" callback={spy} />);
     expect(spy).not.toHaveBeenCalled();
     fireEvent.click(screen.getByText('foo'));
     expect(spy).toHaveBeenCalled();
