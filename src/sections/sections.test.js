@@ -15,7 +15,8 @@ describe('The Header section', () => {
 describe('The Main section', () => {
   it('should contain a button saying Generate Blueprint', () => {
     render(<Main />);
-    expect(screen.getByRole('button').textContent).toContain('Generate Blueprint');
+    const buttonContents = screen.getAllByRole('button').map(({ textContent }) => textContent);
+    expect(buttonContents.indexOf('Generate Blueprint')).not.toBe(-1);
   });
 });
 
