@@ -7,7 +7,6 @@ import TextBox from '../components/TextBox';
 import style from '../components/style.css'
 
 export default function Main() {
-  console.log(style);
   return (
     <main>
       <div className={style.upper}>
