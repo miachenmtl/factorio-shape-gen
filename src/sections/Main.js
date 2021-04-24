@@ -4,7 +4,7 @@ import DropdownSelect from '../components/DropdownSelect';
 import NumberInput from '../components/NumberInput';
 import Button from '../components/Button';
 import TextBox from '../components/TextBox';
-import style from '../components/style.css'
+import style from '../components/style.css';
 
 export default function Main() {
   return (
@@ -21,16 +21,17 @@ export default function Main() {
           labelText="Number of sides:"
           options={['3', '4', '5', '6', '7', '8', '9', '10']}
         />
-        <DropdownSelect
-          labelName="tile"
-          labelText="Tile:"
-          options={['Stone Path', 'Concrete', 'Refined Concrete', 'Hazard Concrete (L)', 'Hazard Concrete (R)', 'Hazard Refined Concrete (L)', 'Hazard Refined Concrete (R)']}
-        />
         <NumberInput
           id="radius"
           label="Radius:"
           defaultValue={20}
         />
+        <DropdownSelect
+          labelName="tile"
+          labelText="Tile:"
+          options={['Stone Path', 'Concrete', 'Refined Concrete', 'Hazard Concrete (L)', 'Hazard Concrete (R)', 'Hazard Refined Concrete (L)', 'Hazard Refined Concrete (R)']}
+        />
+
       </div>
       <div className={style.lower}>
         <Button
@@ -41,11 +42,11 @@ export default function Main() {
           text="Copy"
           disabled={true}
         />
+        <TextBox
+          placeholder="Blueprint string"
+          text=""
+        />
       </div>
-      <TextBox
-        placeholder="Blueprint string"
-        text=""
-      />
     </main> 
   );
 }

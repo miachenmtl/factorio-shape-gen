@@ -1,33 +1,37 @@
+html, body {
+  font: 14px/1.21 'Fira Sans', 'Geneva', verdana, sans-serif;
+	font-weight: 400;
+	color: #06c6b9;
+	background-color: #090c08;
+  margin: 0;
+}
+
 header > h1 {
-  margin: 50px 0;
-  padding: 0;
+  margin: 0;
+  padding-top: 25px;
   font-size: 3rem;
   line-height: 1.5;
   text-align: center;
 }
 
-main {
+.container {
+  position: relative;
   margin: 0 auto;
-  width: calc(100% - 200px);
+  width: 100%;
   max-width: 1200px;
-}
-
-footer {
-  margin: 50px auto;
-  width: calc(100% - 200px);
-  max-width: 1200px;
-}
-
-footer > ul {
+  height: 100vh;
   padding: 0;
-  list-style: none;
 }
 
 .upper {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-wrap: wrap;
   margin: 20px 0;
+  border: 2px solid rgb(73, 78, 64);
+  border-radius: 8px;
+  padding: 20px 20px 40px;
+  background-color: #121810;
 }
 
 @media (max-width: 1000px) {
@@ -36,8 +40,26 @@ footer > ul {
   }
 }
 
+.lower {
+  margin: 50px auto;
+  width: 400px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  max-width: 1200px;
+}
+
+footer > ul {
+  margin-left: 25px;
+  padding: 0;
+  list-style: none;
+}
+
 .element {
-  min-width: 80px;
+  width: 200px;
 }
 
 label {
@@ -46,16 +68,43 @@ label {
   margin-bottom: 5px;
 }
 
-select {
+select, input {
   font-size: 1.25rem;
+  width: 100%;
+  padding: 5px;
+  background-color:rgb(250, 240, 225);
+  border-radius: 8px;
 }
 
-input {
-  font-size: 1.25rem;
+textarea {
+  display: inline-block;
+  width: 100%;
+  resize: none;
+  color: antiquewhite;
+  background-color: gray;
+  border: 1px solid antiquewhite;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+textarea::placeholder {
+  color:antiquewhite;
 }
 
 button {
   margin-right: 10px;
   margin-bottom: 10px;
   font-size: 1.25rem;
+  padding: 10px;
+  border: 0;
+  border-radius: 8px;
+}
+
+button:enabled {
+  color: aliceblue;
+  background-color: #3A94DE;
+}
+
+button:disabled {
+  background-color: gray;
 }
