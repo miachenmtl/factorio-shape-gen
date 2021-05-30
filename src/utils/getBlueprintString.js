@@ -9,6 +9,6 @@ function getBlueprint(tilename, coordinates) {
   return newBlueprint;
 }
 
-const getBlueprintString = (tilename, coordinates) => getBlueprint(tilename, coordinates).encode();
+const getBlueprintString = (tilename, coordinates) => getBlueprint(tilename, coordinates).encode('latest');
 
 export { getBlueprint, getBlueprintString };

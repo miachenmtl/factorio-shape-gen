@@ -2,17 +2,23 @@ import { h } from 'preact';
 
 import style from './style.css';
 
-// See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/select
-
-export default function DropdownSelect({ labelName, labelText, options, disabled, callback }) {
+export default function DropdownSelect({
+  labelName,
+  labelText,
+  options,
+  values,
+  selectedValue,
+  disabled,
+  callback
+}) {
   return (
     <div className={style.element}>
-      <label htmlFor={`${labelName}-select`}>
+      <label htmlFor={`${labelName}-select`} className={disabled && style.disabled}>
         {labelText}
       </label>
-      <select name={labelName} id={`${labelName}-select`} disabled={disabled} onChange={callback}>
+      <select name={labelName} id={`${labelName}-select`} disabled={disabled} onChange={callback} value={selectedValue}>
         {options.map(
-          (option, i) => <option value={option} key={i}>
+          (option, i) => <option value={values[i]} key={i}>
               {option}
             </option>
         )}

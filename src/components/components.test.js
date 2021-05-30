@@ -22,19 +22,32 @@ describe('The CollapsedText component', () => {
 
 describe('The DropdownSelect Component', () => {
   it('should display the label passed as a prop', () => {
-    render(<DropdownSelect labelName="f" labelText="foo" options={['A', 'B']} />);
+    render(<DropdownSelect
+      labelName="f"
+      labelText="foo"
+      options={['A', 'B']}
+      values={['a', 'b']}
+      selectedValue="a"
+    />);
     expect(screen.getByLabelText('foo')).toBeVisible();
   });
 
   it('should call the callback passed as a prop when an option is selected', () => {
     const spy = jest.fn();
-    render(<DropdownSelect labelName="f" labelText="foo" options={['A', 'B']} callback={spy} />);
+    render(<DropdownSelect
+      labelName="f"
+      labelText="foo"
+      options={['A', 'B']}
+      values={['a', 'b']}
+      selectedValue="a"
+      callback={spy}
+    />);
     expect(spy).not.toHaveBeenCalled();
     expect(screen.queryByDisplayValue('B')).toBeNull(); // getBy... throws error if not found
 
-    fireEvent.change(screen.getByLabelText('foo'), { target: { value: 'B' } });
+    fireEvent.change(screen.getByLabelText('foo'), { target: { value: 'b' } });
     expect(spy).toHaveBeenCalled();
-    expect(spy.mock.calls[0][0].target.value).toBe('B');
+    expect(spy.mock.calls[0][0].target.value).toBe('b');
     expect(screen.queryByDisplayValue('B')).toBeDefined();
   });
 });

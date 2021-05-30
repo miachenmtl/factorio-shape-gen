@@ -3,7 +3,7 @@ import CollapsedText from '../components/CollapsedText';
 
 export default function Footer() {
   const label = "About";
-  const text = "A tool for generating blueprints of simple geometric shapes for the game Factorio.";
+  const text = "A tool for generating blueprints of simple geometric outlines for the game Factorio.";
 
   return (
     <footer>

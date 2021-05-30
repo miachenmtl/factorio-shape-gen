@@ -68,6 +68,11 @@ label {
   margin-bottom: 5px;
 }
 
+label.disabled {
+	color: #06c6b9;
+  color: cadetblue;
+}
+
 select, input {
   font-size: 1.25rem;
   width: 100%;
@@ -92,12 +97,14 @@ textarea::placeholder {
 }
 
 button {
+  position: relative;
   margin-right: 10px;
   margin-bottom: 10px;
   font-size: 1.25rem;
   padding: 10px;
   border: 0;
   border-radius: 8px;
+  cursor: pointer;
 }
 
 button:enabled {
@@ -107,4 +114,66 @@ button:enabled {
 
 button:disabled {
   background-color: gray;
+}
+
+button:hover {
+  background-color: #4c9fe4;
+}
+
+button:active {
+  background-color: #2082d3;
+}
+
+button::before {
+  position: absolute;
+  top: -20px;
+  left: 0;
+  content: attr(data-message);
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow-x: visible;
+  opacity: 0;
+}
+
+button.withMessage::before {
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+}
+
+a, div[role=button] {
+  margin: 4px;
+  color: orchid;
+  text-decoration: none;
+}
+
+a:hover, div[role=button]:hover {
+  color: violet;
+}
+
+a:active, div[role=button]:active {
+  color:fuchsia;
+}
+
+.expander {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+}
+
+.expander::after {
+  position: absolute;
+  content: '';
+  top: 2px;
+  bottom: 2px;
+  right: -1.25rem;
+  width: 0;
+  border: 6px solid transparent;
+  border-left-color: orchid;
+  transform-origin: 3px center;
+  transform: rotate(0);
+  transition: all 0.5s ease-out;
+}
+
+.expander.expanded::after {
+  transform: rotate(90deg);
 }
