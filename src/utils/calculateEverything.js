@@ -11,7 +11,6 @@ function calculateEverything(shape, numberOfSides, radius, tile) {
   } else if (shape === 'POLYGON') {
     const vertices = getVertices(radius, numberOfSides);
     const polygonPoints = [];
-    console.log(vertices);
     for (let i = 0; i < numberOfSides; i += 1) {
       const newPoints = getIntermediatePoints(vertices[i], vertices[i + 1]);
       polygonPoints.push(...newPoints);

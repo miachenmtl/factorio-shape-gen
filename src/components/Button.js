@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import style from './style.css';
 
-export default function ActionButton({ text, message, disabled, callback }) {
+export default function Button({ text, message, disabled, callback }) {
   return (
     <button
       disabled={disabled}

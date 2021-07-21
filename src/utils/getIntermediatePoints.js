@@ -122,24 +122,9 @@ function getIntermediatePoints(firstPoint, secondPoint) {
     // one batch of points for every increment of x value
     const nextPoints = getNextBatchOfPoints([currentX, currentY], slope);
     intermediatePoints.push(...nextPoints);
-    // console.log(`next: ${nextPoints}`)
     currentY += slope;
   }
-  /*
-  if ((x0 > -21) && (x0 < -15) && (y0 > 0)) {
-  console.log(`start: (${startX}, ${startY})`);
-  console.log(`lineY: ${lineStartY} : ${lineStopY}`);
-  console.log(`stop: (${stopX}, ${stopY})`);
-  console.log(`inter: ${intermediatePoints}`);
-  console.log(`m=${slope}; b=${yIntercept}`);
-  }
 
-  console.log(`start: (${startX}, ${startY})`);
-  console.log(`lineY: ${lineStartY} : ${lineStopY}`);
-  console.log(`stop: (${stopX}, ${stopY})`);
-  console.log(`inter: ${intermediatePoints}`);
-  console.log(`m=${slope}; b=${yIntercept}`);
-*/
   // truncate beginning points if before line start
   intermediatePoints = intermediatePoints.filter(
     point => checkIfBefore(point, [lineStartX, lineStartY], slopeSign)
@@ -157,7 +142,6 @@ function getIntermediatePoints(firstPoint, secondPoint) {
   if ((lastPoint[0] !== lineStopX) || (lastPoint[1] !== lineStopY)) {
     intermediatePoints.push([lineStopX, lineStopY]);
   }
-  // console.log(`post trim stop: ${intermediatePoints}`);
 
   // reverse and switch start and end points if points were swapped when sorted
   if (firstPoint[0] !== x0 && firstPoint[1] !== y0 && intermediatePoints.length > 0) {
@@ -166,10 +150,8 @@ function getIntermediatePoints(firstPoint, secondPoint) {
     intermediatePoints.reverse();
     intermediatePoints.push([lineStartX, lineStartY]);
   }
-  // console.log(`returning: ${intermediatePoints}`);
 
   return intermediatePoints;
 }
 
-//module.exports = { getIntermediatePoints };
 export { sortPoints, getIntermediatePoints, getLinearEquation, getNextBatchOfPoints };

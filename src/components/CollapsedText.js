@@ -7,7 +7,7 @@ import style from './style.css';
 
 export default function CollapsedText({ label, text }) {
   const [expanded, setExpanded] = useState(false);
-  const idPrefix = label.toLowerCase(); // TODO: remove whitespace, or truncate after first word
+  const idPrefix = label.toLowerCase();
   const expanderId = `${idPrefix}-expander`;
   const textId = `${idPrefix}-text`;
 
@@ -32,7 +32,6 @@ export default function CollapsedText({ label, text }) {
       <p
         id={textId}
         aria-labelledby="about-expander"
-        foo="bar"
         style={pStyle}
       >
         {text}

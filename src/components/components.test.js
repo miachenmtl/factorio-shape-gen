@@ -7,7 +7,7 @@ import DropdownSelect from './DropdownSelect';
 import Button from './Button';
 
 describe('The CollapsedText component', () => {
-  it('should initially shqow the button and hide the text', () => {
+  it('should initially show the button and hide the text', () => {
     render(<CollapsedText label="Show" text="foo" />);
     expect(screen.getByText('Show')).toBeVisible();
     expect(screen.getByText('foo')).not.toBeVisible();
@@ -52,7 +52,7 @@ describe('The DropdownSelect Component', () => {
   });
 });
 
-describe('The ActionButton Component', () => {
+describe('The Button Component', () => {
   it('should display the text passed as props', () => {
     render(<Button text="foo" />);
     expect(screen.getByText('foo')).toBeDefined();

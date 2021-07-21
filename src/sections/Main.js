@@ -11,7 +11,14 @@ import tileData from './tileData';
 import calculateEverything from '../utils/calculateEverything';
 
 function callbackify(fn) {
-  return ({ target: { value }}) => fn(value);
+  return ({ target: { value }}) => { fn(value); };
+}
+
+function numberify(x) {
+  return 
+  if (typeof x === 'number') return x;
+  else if (typeof x === 'string') return parseInt(x, 10);
+  console.log(`numberify util did not recognize the type of ${x}.`)
 }
 
 async function copyToClipboard(string, setMessage) {
@@ -38,6 +45,8 @@ export default function Main() {
   const [genMessage, setGenMessage] = useState('');
   const [copyMessage, setCopyMessage] = useState('');
 
+  const sideCallback = ({ target: { value } }) => { setNumberOfSides(numberify(value)); };
+
   useEffect(() => {
     if (bpString.length > 0) copyToClipboard(bpString, setGenMessage);
   }, [bpString]);
@@ -60,7 +69,7 @@ export default function Main() {
           options={['3', '4', '5', '6', '7', '8', '9', '10']}
           values={[3, 4, 5, 6, 7, 8, 9, 10]}
           selectedValue={numberOfSides}
-          callback={callbackify(setNumberOfSides)}
+          callback={sideCallback}
         />
         <NumberInput
           id="radius"
